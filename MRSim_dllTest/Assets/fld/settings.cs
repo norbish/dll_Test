@@ -26,6 +26,8 @@ public class settings : MonoBehaviour
         Physics.autoSimulation = false; //Turn off Unity Physics
         Main_Initialization();
 
+        Dynamics.SetMovement("Turn", 1, 1);
+
         //Main_Initialization();
     }
 
@@ -248,6 +250,8 @@ public class settings : MonoBehaviour
             {
                 //Retrieves Frameobject with GUID, and updates position,size,rotation:
                 try { frameVis.Find(x => x.guid == frame.guid).Update(Sim_CoreHelper(frame.position), Sim_CoreHelper(frame.rotation), module.Axis); } catch (NullReferenceException e) { Debug.Log("Could not find frame with Guid." + e); }
+
+                Debug.Log(frame.rotation.x+ ","+frame.rotation.y +","+frame.rotation.z);
             }
 
             //try { jointVis.Find(x => x.guid == module.joint.guid).Update(module.joint.Vis_ContactPoints()); } catch(NullReferenceException e) { Debug.Log("Could not find joint with Guid." + e ); }
